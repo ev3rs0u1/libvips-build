@@ -17,7 +17,7 @@ jobs:
       image: ubuntu-2204:current
     steps:
       - checkout
-      - github-cli/setup:
+      - github-cli/setup
       - run: ./build.sh $(cat LIBVIPS_VERSION) linux-arm64v8
       - run: ./integrity.sh
       - when:
