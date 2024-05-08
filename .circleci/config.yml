@@ -26,4 +26,6 @@ jobs:
       - when:
           condition: <<pipeline.git.tag>>
           steps:
-            - run: gh release upload --repo "$(git config --get remote.origin.url)" $CIRCLE_TAG *.tar.gz *.integrity
+            - run: |
+                gh release upload --repo "$(git config --get remote.origin.url)" $CIRCLE_TAG *.tar.gz *.integrity
+              env: GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
