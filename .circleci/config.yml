@@ -18,12 +18,12 @@ jobs:
     steps:
       - checkout
       - github-cli/setup
-      - run:
-          name: Set GitHub Token
-          command: gh auth login --with-token \<<EOF\n$GITHUB_TOKEN\nEOF
       - run: ./build.sh $(cat LIBVIPS_VERSION) linux-arm64v8
       - run: ./integrity.sh
       - when:
-          condition: '\<<pipeline.git.tag>>'
+          condition: <<pipeline.git.tag>>
           steps:
+            - run:
+              name: Set GitHub Token
+              command: echo 'export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}' >> $BASH_ENV
             - run: gh release upload --repo "$(git config --get remote.origin.url)" $CIRCLE_TAG *.tar.gz *.integrity
