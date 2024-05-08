@@ -18,10 +18,10 @@ jobs:
     steps:
       - checkout
       - github-cli/setup
-      - run: ./build.sh $(cat LIBVIPS_VERSION) linux-arm64v8
-      - run: ./integrity.sh
       - env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: ./build.sh $(cat LIBVIPS_VERSION) linux-arm64v8
+      - run: ./integrity.sh
       - when:
           condition: <<pipeline.git.tag>>
           steps:
