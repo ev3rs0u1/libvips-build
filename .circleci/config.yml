@@ -18,9 +18,6 @@ jobs:
     steps:
       - checkout
       - github-cli/setup
-      - run:
-        name: Set GitHub Token
-        command: echo 'export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}' >> $BASH_ENV
       - run: ./build.sh $(cat LIBVIPS_VERSION) linux-arm64v8
       - run: ./integrity.sh
       - when:
