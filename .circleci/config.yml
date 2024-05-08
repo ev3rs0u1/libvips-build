@@ -18,6 +18,10 @@ jobs:
     steps:
       - checkout
       - github-cli/setup
+      # 在此步骤中设置GitHub令牌
+      - run:
+          name: Set GitHub Token
+          command: gh auth login --with-token <<< $GITHUB_TOKEN
       - run: ./build.sh $(cat LIBVIPS_VERSION) linux-arm64v8
       - run: ./integrity.sh
       - when:
