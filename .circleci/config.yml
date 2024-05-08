@@ -24,3 +24,4 @@ jobs:
           condition: <<pipeline.git.tag>>
           steps:
             - run: gh release upload --repo "$(git config --get remote.origin.url)" $CIRCLE_TAG *.tar.gz *.integrity
+
