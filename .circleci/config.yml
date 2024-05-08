@@ -18,7 +18,7 @@ jobs:
     steps:
       - checkout
       - github-cli/setup:
-          token: $GITHUB_TOKEN
+          token: ${GITHUB_TOKEN}
       - run: ./build.sh $(cat LIBVIPS_VERSION) linux-arm64v8
       - run: ./integrity.sh
       - when:
