@@ -22,8 +22,7 @@ jobs:
       matrix:
         os: [ ubuntu-22.04 ]
         platform:
-          - 'linuxmusl-x64'
-          - 'linuxmusl-arm64v8'
+          - 'linux-x64'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
